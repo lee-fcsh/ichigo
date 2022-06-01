@@ -3,10 +3,15 @@
 {{ endblock }}
 
 {{ block content }}
+    HEAD:Survey/Results.html
     <p>
         Your name is {{ player.name }} and your age is {{ player.age }}!!.
     </p>
+
+    {{ formfields }}
+
     {{ next_button }}
+
 {{ endblock }}
 
 
