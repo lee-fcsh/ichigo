@@ -18,8 +18,8 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-    name = models.StringField(label='What is your name?', widget=widgets.TextInput)
-    age = models.IntegerField(label='What is your age?', min=13, max=125)
+    name = models.StringField(label='What is your name?')
+    age = models.IntegerField(label='What is your age?')
 
 class Survey(Page):
     form_model = 'player'
