@@ -1,2 +1,3 @@
 # ichigo
-Para el entrenamiento de  Manuel Loor
+Repositorio destinado a la prácticas con los 3 tutoriales iniciales de Otree.
+
