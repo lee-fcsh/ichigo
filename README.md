@@ -13,7 +13,3 @@ Las herramientas utilizadas para el desarrollo de los experimentos son las sigui
 # Autor ✒️
 
 - Manuel Alejandro Loor Macías - Junior Developer - [maalloor](https://github.com/maalloor)
-
-# Comandos para ejecutar los experimientos
-
-- Antes de ejecutar un experimento es necesario actualizar el archivo ```settings.py```
