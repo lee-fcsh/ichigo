@@ -47,18 +47,19 @@ ROOMS = [
         name='econ101',
         display_name='Econ 101 class',
         participant_label_file='_rooms/econ101.txt',
+        use_security_urls = True
     ),
     dict(
         name='econ102',
         display_name='Econ 102 class',
         participant_label_file='_rooms/econ102.txt',
-        use_secure_urls=True
+        use_secure_urls = True
     ),
     dict(
         name='econ103',
         display_name='Econ 103 class',
         participant_label_file='_rooms/econ103.txt',
-        use_secure_urls=True
+        use_secure_urls = True
     )
 ]
 
