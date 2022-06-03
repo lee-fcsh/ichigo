@@ -47,7 +47,7 @@ ROOMS = [
         name='econ101',
         display_name='Econ 101 class',
         participant_label_file='_rooms/econ101.txt',
-        use_security_urls = True
+        use_secure_urls = True
     ),
     dict(
         name='econ102',
