@@ -47,8 +47,8 @@ class Send(Page):
             Args -> player: Player
             Return -> boolean
 
-            (If the function determines that player.id_in_group == 1 is true,
-            the page will be displayed)
+            >>> If the function determines that player.id_in_group == 1 is true,
+            the page will be displayed
         """
         return player.id_in_group == 1
 
@@ -63,8 +63,8 @@ class SendBack(Page):
             Args -> player: Player
             Return -> boolean
 
-            (If the function determines that player.id_in_group == 2 is true,
-            the page will be displayed)
+            >>> If the function determines that player.id_in_group == 2 is true,
+            the page will be displayed
         """
         return player.id_in_group == 2
 
@@ -74,7 +74,7 @@ class SendBack(Page):
             Args -> player: Player
             Return -> Dictionary
 
-            (If the functions recive 6 points, the range is from 0 to 12 points)
+            >>> The function recive 4 points, the range is from 0 to 12 points
         """
         group = player.group
         return dict(
@@ -83,7 +83,11 @@ class SendBack(Page):
 
 # METHODS
 def sent_back_amount_choices(group):
-    """Function that will populate the dropdown dynamically"""
+    """Function that calculates the choices for the sent back amount
+        Args -> group: Group
+        Return -> list of choices
+        >>> The function recive 4 points, the range is from 0 to 12
+    """
     return currency_range(
         0,
         group.sent_amount * C.MULTIPLICATION_FACTOR,
@@ -91,7 +95,12 @@ def sent_back_amount_choices(group):
     )
 
 def set_payoffs(group):
-    """Function to calculate player contributions"""
+    """Function that calculates the payoffs
+        Args -> group: Group
+        Return -> None
+        >>> This function is in charge of initializing the player 1 and player 2
+            variables and the payoff attributes, respectively
+    """
     player1 = group.get_player_by_id(1)
     player2 = group.get_player_by_id(2)
     player1.payoff = C.ENDOWMENT - group.sent_amount + group.sent_back_amount

@@ -1,9 +1,14 @@
-"""Module otree"""
+"""Otree has a REST API that allows external programs to communicate with Otree,
+through the following line of code: """
 from otree.api import *
 
-
 DOC = """
-Your app description
+The public goods experiment is a standard of experimental economics. Participants
+secretly select how many of their contributions to put into the public pot.
+Contributions from this pot are multiplied by a factor, which must be greater
+than 1 and less than the number of participants N, and this "public good" payment
+is divided equally among the participants. Each participant will also keep the
+contributions they made in the experiment.
 """
 
 class C(BaseConstants):
