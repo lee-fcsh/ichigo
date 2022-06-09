@@ -1,11 +1,14 @@
-"""Module otree"""
+"""Otree has a REST API that allows external programs to communicate with Otree,
+through the following line of code: """
 from otree.api import *
 
-
 DOC = """
-My Trust by Manuel
+It is an economics experiment designed to measure confidence in economic decisions.
+It consists of two participants sharing a certain amount of contributions, but anonymously.
+One participant can donate "x" amount of money to the other, even if they are zero contributions.
+The contributions are collected by the experiment, which triples the contribution and gives
+it to the other participant, even if it is zero.
 """
-
 
 class C(BaseConstants):
     """Class representing Especial"""
@@ -40,7 +43,13 @@ class Send(Page):
 
     @staticmethod
     def is_displayed(player):
-        """Function that shows the player that he is going to skip the page"""
+        """Function that determines and shows if the page is displayed
+            Args -> player: Player
+            Return -> boolean
+
+            (If the function determines that player.id_in_group == 1 is true,
+            the page will be displayed)
+        """
         return player.id_in_group == 1
 
 class SendBack(Page):
@@ -50,12 +59,23 @@ class SendBack(Page):
 
     @staticmethod
     def is_displayed(player):
-        """Function that shows the player that he is going to skip the page"""
+        """Function that determines and shows if the page is displayed
+            Args -> player: Player
+            Return -> boolean
+
+            (If the function determines that player.id_in_group == 2 is true,
+            the page will be displayed)
+        """
         return player.id_in_group == 2
 
     @staticmethod
     def vars_for_template(player):
-        """Function to pass the tripled_amount variable to the template"""
+        """Function that determines the variables for the template
+            Args -> player: Player
+            Return -> Dictionary
+
+            (If the functions recive 6 points, the range is from 0 to 12 points)
+        """
         group = player.group
         return dict(
             tripled_amount=group.sent_amount * C.MULTIPLICATION_FACTOR
