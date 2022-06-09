@@ -1,9 +1,11 @@
-"""Module otree"""
+"""Otree has a REST API that allows external programs to communicate with Otree,
+through the following line of code: """
 from otree.api import *
 
 
 DOC = """
-My survey by Manuel Loor
+App that contains a form with two text fields to request data from users,
+which will be sent with a submit button on the form
 """
 
 
