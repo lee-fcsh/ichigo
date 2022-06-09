@@ -45,7 +45,15 @@ class Contribute(Page):
 # METHODS
 
 def set_payoffs(group):
-    """Function to calculate player contributions"""
+    """Function that calculates the payoffs
+        Args -> group: Group
+        Return -> None
+        >>> This function is responsible for declaring and initializing a list of players.
+        In addition, a list of contributions is also declared and initialized from the list
+        of players. On the other hand, the total_contribution and individual_share
+        attributes of the group variable are modified. And finally, for each player
+        in the players list, the payoff attribute is modified.
+    """
     players = group.get_players()
     contributions = [p.contribution for p in players]
     group.total_contribution = sum(contributions)
