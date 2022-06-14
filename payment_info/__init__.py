@@ -7,7 +7,7 @@ Examples are given for the lab and Amazon Mechanical Turk (AMT).
 """
 
 
-class C(BaseConstants):
+class C(BaseConstants): # pylint: disable=locally-disabled, invalid-name
     """Class representing C"""
     NAME_IN_URL = 'payment_info'
     PLAYERS_PER_GROUP = None

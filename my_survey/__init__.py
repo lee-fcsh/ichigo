@@ -1,3 +1,4 @@
+#pylint: disable=import-error
 """Otree has a REST API that allows external programs to communicate with Otree,
 through the following line of code: """
 from otree.api import *
@@ -9,7 +10,7 @@ which will be sent with a submit button on the form
 """
 
 
-class C(BaseConstants):
+class C(BaseConstants): # pylint: disable=locally-disabled, invalid-name
     """Class representing Especial"""
     NAME_IN_URL = 'my_survey'
     PLAYERS_PER_GROUP = None
