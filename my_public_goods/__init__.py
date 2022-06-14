@@ -13,7 +13,7 @@ contributions they made in the experiment.
 """
 
 class C(BaseConstants): # pylint: disable=locally-disabled, invalid-name
-    """Class representing Especial"""
+    """Class representing C in My public goods's experiment"""
     NAME_IN_URL = 'my_public_goods'
     PLAYERS_PER_GROUP = 3
     NUM_ROUNDS = 1
@@ -21,17 +21,17 @@ class C(BaseConstants): # pylint: disable=locally-disabled, invalid-name
     MULTIPLIER = 2
 
 class Subsession(BaseSubsession):
-    """Class representing a Subsession"""
+    """Class representing a Subsession in My public goods's experiment"""
 
 
 class Group(BaseGroup):
-    """Class representing Group"""
+    """Class representing Group in My public goods's experiment"""
     total_contribution = models.CurrencyField()
     individual_share = models.CurrencyField()
 
 
 class Player(BasePlayer):
-    """Class representing a Player"""
+    """Class representing a Player in My public goods's experiment"""
     contribution = models.CurrencyField(
         min = 0,
         max = C.ENDOWMENT,
@@ -39,7 +39,7 @@ class Player(BasePlayer):
     )
 
 class Contribute(Page):
-    """Class representing a Contribute"""
+    """Class representing a Contribute in My public goods's experiment"""
     form_model = 'player'
     form_fields = ['contribution']
 
@@ -65,11 +65,11 @@ def set_payoffs(group):
 # PAGES
 
 class ResultsWaitPage(WaitPage):
-    """Class representing ResultWaitPage"""
+    """Class representing ResultWaitPage in My public goods's experiment"""
     after_all_players_arrive = 'set_payoffs'
 
 
 class Results(Page):
-    """Class representing last result"""
+    """Class representing last result in My public goods's experiment"""
 
 page_sequence = [Contribute, ResultsWaitPage, Results]

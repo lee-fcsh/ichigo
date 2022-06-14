@@ -12,7 +12,7 @@ it to the other participant, even if it is zero.
 """
 
 class C(BaseConstants): # pylint: disable=locally-disabled, invalid-name
-    """Class representing Especial"""
+    """Class representing C in My Trust's experiment"""
     NAME_IN_URL = 'my_trust'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
@@ -21,11 +21,11 @@ class C(BaseConstants): # pylint: disable=locally-disabled, invalid-name
 
 
 class Subsession(BaseSubsession):
-    """Class representing a Subsession"""
+    """Class representing a Subsession in My Trust's experiment"""
 
 
 class Group(BaseGroup):
-    """Class representing Group"""
+    """Class representing Group in My Trust's experiment"""
     sent_amount = models.CurrencyField(
         label="How much do you want to send to participant B?"
     )
@@ -34,12 +34,12 @@ class Group(BaseGroup):
     )
 
 class Player(BasePlayer):
-    """Class representing a Player"""
+    """Class representing a Player in My Trust's experiment"""
     sent_amount = models.CurrencyField()
     sent_back_amount = models.CurrencyField()
 
 class SendBack(Page):
-    """Class representing a SendBack"""
+    """Class representing a SendBack in My Trust's experiment"""
     form_model = 'group'
     form_fields = ['sent_back_amount']
 
@@ -90,7 +90,7 @@ def set_payoffs(group):
 
 # PAGES
 class Send(Page):
-    """Class representing a Send"""
+    """Class representing a Send in My Trust's experiment"""
     form_model = 'group'
     form_fields = ['sent_amount']
 
@@ -106,14 +106,14 @@ class Send(Page):
         return _player.id_in_group == 1
 
 class WaitForP1(WaitPage):
-    """Class representing a WaitPage"""
+    """Class representing a WaitPage in My Trust's experiment"""
 
 class ResultsWaitPage(WaitPage):
-    """Class representing ResultWaitPage"""
+    """Class representing ResultWaitPage in My Trust's experiment"""
     after_all_players_arrive = set_payoffs
 
 class Results(Page):
-    """Class representing last result"""
+    """Class representing last result in My Trust's experiment"""
 
 page_sequence = [
     Send,

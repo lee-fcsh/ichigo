@@ -11,29 +11,29 @@ which will be sent with a submit button on the form
 
 
 class C(BaseConstants): # pylint: disable=locally-disabled, invalid-name
-    """Class representing Especial"""
+    """Class representing C in My Survey's experiment"""
     NAME_IN_URL = 'my_survey'
     PLAYERS_PER_GROUP = None
     NUM_ROUNDS = 1
 
 class Subsession(BaseSubsession):
-    """Class representing a Subsession"""
+    """Class representing a Subsession in My Survey's experiment"""
 
 class Group(BaseGroup):
-    """Class representing Group"""
+    """Class representing Group in My Survey's experiment"""
 
 class Player(BasePlayer):
-    """Class representing a Player"""
+    """Class representing a Player in My Survey's experiment"""
     name = models.StringField(label='What is your name?')
     age = models.IntegerField(label='What is your age?')
 
 class Survey(Page):
-    """Class representing Survey"""
+    """Class representing Survey in My Survey's experiment"""
     form_model = 'player'
     form_fiels = ['name', 'age']
 
 class Results(Page):
-    """Class representing last result"""
+    """Class representing last result in My Survey's experiment"""
     form_model = 'player'
 
 page_sequence = [Survey, Results]

@@ -1,3 +1,4 @@
+#pylint: disable=import-error
 """Module otree"""
 from otree.api import *
 
@@ -15,15 +16,15 @@ class C(BaseConstants): # pylint: disable=locally-disabled, invalid-name
 
 
 class Subsession(BaseSubsession):
-    """Class representing a Subsession"""
+    """Class representing a Subsession in Payment_info"""
 
 
 class Group(BaseGroup):
-    """Class representing a Group"""
+    """Class representing a Group in Payment_info"""
 
 
 class Player(BasePlayer):
-    """Class representing a Player______"""
+    """Class representing a Player in Payment_info"""
 
 # PAGES
 class PaymentInfo(Page):
