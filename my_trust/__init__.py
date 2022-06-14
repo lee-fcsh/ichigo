@@ -33,25 +33,8 @@ class Group(BaseGroup):
         label="How much do you want to send back?"
     )
 
-
 class Player(BasePlayer):
     """Class representing a Player"""
-
-class Send(Page):
-    """Class representing a Send"""
-    form_model = 'group'
-    form_fields = ['sent_amount']
-
-    @staticmethod
-    def is_displayed(player):
-        """Function that determines and shows if the page is displayed
-            Args -> player: Player
-            Return -> boolean
-
-            >>> If the function determines that player.id_in_group == 1 is true,
-            the page will be displayed
-        """
-        return player.id_in_group == 1
 
 class SendBack(Page):
     """Class representing a SendBack"""
@@ -59,7 +42,7 @@ class SendBack(Page):
     form_fields = ['sent_back_amount']
 
     @staticmethod
-    def is_displayed(player):
+    def is_displayed(_player):
         """Function that determines and shows if the page is displayed
             Args -> player: Player
             Return -> boolean
@@ -67,17 +50,17 @@ class SendBack(Page):
             >>> If the function determines that player.id_in_group == 2 is true,
             the page will be displayed
         """
-        return player.id_in_group == 2
+        return _player.id_in_group == 2
 
     @staticmethod
-    def vars_for_template(player):
+    def vars_for_template(_player):
         """Function that determines the variables for the template
             Args -> player: Player
             Return -> Dictionary
 
             >>> The function recive 4 points, the range is from 0 to 12 points
         """
-        group = player.group
+        group = _player.group
         return dict(
             tripled_amount=group.sent_amount * C.MULTIPLICATION_FACTOR
         )
@@ -89,11 +72,7 @@ def sent_back_amount_choices(group):
         Return -> list of choices
         >>> The function recive 4 points, the range is from 0 to 12
     """
-    return currency_range(
-        0,
-        group.sent_amount * C.MULTIPLICATION_FACTOR,
-        1
-    )
+    return currency_range(0, group.sent_amount * C.MULTIPLICATION_FACTOR, 1)
 
 def set_payoffs(group):
     """Function that calculates the payoffs
@@ -108,6 +87,21 @@ def set_payoffs(group):
     player2.payoff = group.sent_amount * C.MULTIPLICATION_FACTOR - group.sent_back_amount
 
 # PAGES
+class Send(Page):
+    """Class representing a Send"""
+    form_model = 'group'
+    form_fields = ['sent_amount']
+
+    @staticmethod
+    def is_displayed(_player):
+        """Function that determines and shows if the page is displayed
+            Args -> player: Player
+            Return -> boolean
+
+            >>> If the function determines that player.id_in_group == 1 is true,
+            the page will be displayed
+        """
+        return _player.id_in_group == 1
 
 class WaitForP1(WaitPage):
     """Class representing a WaitPage"""

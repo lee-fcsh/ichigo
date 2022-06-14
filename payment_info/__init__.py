@@ -31,9 +31,9 @@ class Player(BasePlayer):
 class PaymentInfo(Page):
     """Class representing a PaymentInfo"""
     @staticmethod
-    def vars_for_template(player: Player):
+    def vars_for_template(_player: Player):
         """Function to pass the redemption_code variable to the template"""
-        participant = player.participant
+        participant = _player.participant
         return dict(redemption_code=participant.label or participant.code)
 
 
