@@ -5,19 +5,19 @@ SESSION_CONFIGS = [
     dict(
         name='my_survey',
         display_name="Survey Simple by Manuel Loor",
-        app_sequence=['my_survey', 'payment_info'],
+        app_sequence=['my_survey'],
         num_demo_participants=1
     ),
     dict(
         name='my_public_goods',
         display_name="My public goods  by Manuel Loor",
-        app_sequence=['my_public_goods', 'payment_info'],
+        app_sequence=['my_public_goods'],
         num_demo_participants=3,
     ),
     dict(
         name='my_trust',
         display_name="My trust by Manuel Loor",
-        app_sequence=['my_trust', 'payment_info'],
+        app_sequence=['my_trust'],
         num_demo_participants=2,
     ),
 ]

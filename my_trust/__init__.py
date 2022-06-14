@@ -1,3 +1,4 @@
+#pylint: disable=import-error
 """Otree has a REST API that allows external programs to communicate with Otree,
 through the following line of code: """
 from otree.api import *
@@ -10,8 +11,8 @@ The contributions are collected by the experiment, which triples the contributio
 it to the other participant, even if it is zero.
 """
 
-class C(BaseConstants):
-    """Class representing Especial"""
+class C(BaseConstants): # pylint: disable=locally-disabled, invalid-name
+    """Class representing C in My Trust's experiment"""
     NAME_IN_URL = 'my_trust'
     PLAYERS_PER_GROUP = 2
     NUM_ROUNDS = 1
@@ -20,11 +21,11 @@ class C(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    """Class representing a Subsession"""
+    """Class representing a Subsession in My Trust's experiment"""
 
 
 class Group(BaseGroup):
-    """Class representing Group"""
+    """Class representing Group in My Trust's experiment"""
     sent_amount = models.CurrencyField(
         label="How much do you want to send to participant B?"
     )
@@ -32,33 +33,18 @@ class Group(BaseGroup):
         label="How much do you want to send back?"
     )
 
-
 class Player(BasePlayer):
-    """Class representing a Player"""
-
-class Send(Page):
-    """Class representing a Send"""
-    form_model = 'group'
-    form_fields = ['sent_amount']
-
-    @staticmethod
-    def is_displayed(player):
-        """Function that determines and shows if the page is displayed
-            Args -> player: Player
-            Return -> boolean
-
-            >>> If the function determines that player.id_in_group == 1 is true,
-            the page will be displayed
-        """
-        return player.id_in_group == 1
+    """Class representing a Player in My Trust's experiment"""
+    sent_amount = models.CurrencyField()
+    sent_back_amount = models.CurrencyField()
 
 class SendBack(Page):
-    """Class representing a SendBack"""
+    """Class representing a SendBack in My Trust's experiment"""
     form_model = 'group'
     form_fields = ['sent_back_amount']
 
     @staticmethod
-    def is_displayed(player):
+    def is_displayed(_player):
         """Function that determines and shows if the page is displayed
             Args -> player: Player
             Return -> boolean
@@ -66,17 +52,17 @@ class SendBack(Page):
             >>> If the function determines that player.id_in_group == 2 is true,
             the page will be displayed
         """
-        return player.id_in_group == 2
+        return _player.id_in_group == 2
 
     @staticmethod
-    def vars_for_template(player):
+    def vars_for_template(_player):
         """Function that determines the variables for the template
             Args -> player: Player
             Return -> Dictionary
 
             >>> The function recive 4 points, the range is from 0 to 12 points
         """
-        group = player.group
+        group = _player.group
         return dict(
             tripled_amount=group.sent_amount * C.MULTIPLICATION_FACTOR
         )
@@ -88,11 +74,7 @@ def sent_back_amount_choices(group):
         Return -> list of choices
         >>> The function recive 4 points, the range is from 0 to 12
     """
-    return currency_range(
-        0,
-        group.sent_amount * C.MULTIPLICATION_FACTOR,
-        1
-    )
+    return currency_range(0, group.sent_amount * C.MULTIPLICATION_FACTOR, 1)
 
 def set_payoffs(group):
     """Function that calculates the payoffs
@@ -107,16 +89,31 @@ def set_payoffs(group):
     player2.payoff = group.sent_amount * C.MULTIPLICATION_FACTOR - group.sent_back_amount
 
 # PAGES
+class Send(Page):
+    """Class representing a Send in My Trust's experiment"""
+    form_model = 'group'
+    form_fields = ['sent_amount']
+
+    @staticmethod
+    def is_displayed(_player):
+        """Function that determines and shows if the page is displayed
+            Args -> player: Player
+            Return -> boolean
+
+            >>> If the function determines that player.id_in_group == 1 is true,
+            the page will be displayed
+        """
+        return _player.id_in_group == 1
 
 class WaitForP1(WaitPage):
-    """Class representing a WaitPage"""
+    """Class representing a WaitPage in My Trust's experiment"""
 
 class ResultsWaitPage(WaitPage):
-    """Class representing ResultWaitPage"""
+    """Class representing ResultWaitPage in My Trust's experiment"""
     after_all_players_arrive = set_payoffs
 
 class Results(Page):
-    """Class representing last result"""
+    """Class representing last result in My Trust's experiment"""
 
 page_sequence = [
     Send,
