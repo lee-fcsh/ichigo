@@ -23,10 +23,8 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    """Class representing a Player"""
+    """Class representing a Player______"""
 
-
-# FUNCTIONS
 # PAGES
 class PaymentInfo(Page):
     """Class representing a PaymentInfo"""

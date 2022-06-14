@@ -35,6 +35,8 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     """Class representing a Player"""
+    sent_amount = models.CurrencyField()
+    sent_back_amount = models.CurrencyField()
 
 class SendBack(Page):
     """Class representing a SendBack"""
